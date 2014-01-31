@@ -1,0 +1,9 @@
+[
+
+    {
+        "caption": "File: Open this file with an external application",
+        "command": "open_externally",
+        "args": {"then_close": false}
+    }
+
+]

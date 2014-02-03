@@ -48,10 +48,11 @@ class PreventBinPreview(sublime_plugin.EventListener):
     last_path = None
 
     def on_load(self, view):
-        if view.window() and view.settings().get("prevent_bin_preview", True):
+        win = view.window() or sublime.active_window()
+        if win and view.settings().get("prevent_bin_preview", True):
             path = view.file_name()
             if path and self.last_path != path:
                 for gpat in view.settings().get("binary_file_patterns", []):
                     if fnmatch(path, gpat):
-                        view.window().run_command("close")
+                        sublime.set_timeout(lambda: win.run_command("close"), 0)
             self.last_path = path

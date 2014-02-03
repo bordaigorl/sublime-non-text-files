@@ -9,11 +9,14 @@ There is an option to turn off previews for binary files and options to open fil
 
 ## Installation
 
- 1. Install [Sublime Text 3](http://www.sublimetext.com/3)
+ 1. Install [Sublime Text](http://www.sublimetext.com/)
+
  2. Install the plugin either:
- 
-     - with **Package Control**: see <https://sublime.wbond.net/docs/usage>, or
-     - **manually**: by cloning this repository in your Sublime Text Package directory
+    - with **Package Control**: see <https://sublime.wbond.net/docs/usage>, or
+    - **manually**: by cloning this repository in your Sublime Text Package directory
+
+ 3. Customise the `open_externally_patterns` setting in your preferences
+    (`Preferences > Settings - User`)
 
 ## Features and settings
 
@@ -30,16 +33,14 @@ Sometimes it would be more useful if Sublime Text launched the default applicati
 This plugin allows you to do that via a special option: the files matching any of the `open_externally_patterns` will be opened with the default application as configured in your OS instead of using Sublime. You can set it globally in the `User/Preferences.sublime-settings` file or locally to a project.
 This setting follows the same syntax of the `binary_file_patterns` setting: it is just a list of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29). An example:
 
-```json
-"open_externally_patterns": [
-    "*.jpg",
-    "*.jpeg",
-    "*.png",
-    "*.gif",
-    "*.zip",
-    "*.pdf"
-],
-```
+    "open_externally_patterns": [
+        "*.jpg",
+        "*.jpeg",
+        "*.png",
+        "*.gif",
+        "*.zip",
+        "*.pdf"
+    ]
 
 The plugin also offers a window command `open_externally` that opens a file with the default application. It takes two optional arguments:
 

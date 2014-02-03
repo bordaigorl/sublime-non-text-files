@@ -40,8 +40,6 @@ class OpenFileExternally(sublime_plugin.EventListener):
         for gpat in view.settings().get("open_externally_patterns", []):
             if fnmatch(path, gpat):
                 open_file(path)
-                if view.window():
-                    view.window().run_command("close")
 
 
 class PreventBinPreview(sublime_plugin.EventListener):

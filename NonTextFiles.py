@@ -28,7 +28,10 @@ class OpenExternallyCommand(sublime_plugin.WindowCommand):
             sublime.set_timeout(lambda: view.erase_status("NTFiles"), 10000)
 
     def is_enabled(self):
-        return self.window.active_view().file_name() is not None
+        if self.window.active_view():
+            return self.window.active_view().file_name() is not None
+        else:
+            return False
 
 
 class OpenFileExternally(sublime_plugin.EventListener):

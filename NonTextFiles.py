@@ -22,7 +22,10 @@ class OpenExternallyCommand(sublime_plugin.WindowCommand):
         if path:
             open_file(path)
             if then_close:
-                self.window.run_command("close")
+                if hasattr(view, "close"):
+                    view.close()
+                else:
+                    self.window.run_command("close")
         else:
             view.set_status("NTFiles", "Cannot open file with external application")
             sublime.set_timeout(lambda: view.erase_status("NTFiles"), 10000)
@@ -55,5 +58,8 @@ class PreventBinPreview(sublime_plugin.EventListener):
             if path and self.last_path != path:
                 for gpat in view.settings().get("binary_file_patterns", []):
                     if fnmatch(path, gpat):
-                        sublime.set_timeout(lambda: win.run_command("close"), 0)
+                        if hasattr(view, "close"):
+                            view.close()
+                        else:
+                            sublime.set_timeout(lambda: win.run_command("close"), 0)
             self.last_path = path

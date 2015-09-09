@@ -52,6 +52,9 @@ class OpenFileExternally(sublime_plugin.EventListener):
 class PreventBinPreview(sublime_plugin.EventListener):
     last_path = None
 
+    def reset_path(self):
+        self.last_path = None
+
     def on_load(self, view):
         win = view.window() or sublime.active_window()
         if win and view.settings().get("prevent_bin_preview", True):
@@ -65,3 +68,4 @@ class PreventBinPreview(sublime_plugin.EventListener):
                             sublime.set_timeout(lambda: win.run_command("close"), 0)
                         break
             self.last_path = path
+        sublime.set_timeout(lambda: self.reset_path(), 500)

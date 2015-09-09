@@ -46,6 +46,7 @@ class OpenFileExternally(sublime_plugin.EventListener):
         for gpat in view.settings().get("open_externally_patterns", []):
             if fnmatch(path, gpat):
                 open_file(path)
+                break
 
 
 class PreventBinPreview(sublime_plugin.EventListener):
@@ -62,4 +63,5 @@ class PreventBinPreview(sublime_plugin.EventListener):
                             view.close()
                         else:
                             sublime.set_timeout(lambda: win.run_command("close"), 0)
+                        break
             self.last_path = path

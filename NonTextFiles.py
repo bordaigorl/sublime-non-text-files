@@ -36,10 +36,30 @@ class OpenExternallyCommand(sublime_plugin.WindowCommand):
         else:
             return False
 
+class NonTextFilesRightClickCommand(sublime_plugin.WindowCommand):
+
+    def run(self, **kw):
+        pass
+
+    def is_visible(self, **kw):
+        OpenFileExternally.bypass = True
+        return False
+
+
+def enableOpenFileExternally():
+    OpenFileExternally.bypass = False
+
 
 class OpenFileExternally(sublime_plugin.EventListener):
 
+    bypass = False
+
     def on_load(self, view):
+        # I reset the bypass flag with a timeout to fail gracefully
+        # if ST calls the `is_visible` method after the `on_load` event.
+        sublime.set_timeout(enableOpenFileExternally, 500)
+        if OpenFileExternally.bypass:
+            return
         path = view.file_name()
         if not path:
             return

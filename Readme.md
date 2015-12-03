@@ -7,6 +7,21 @@ This plugin offers settings and commands to control when Sublime should open cer
 
 There is an option to turn off previews for binary files and options to open files with their default external applications.
 
+If you like this plugin and would like to support its development please consider donating through a [paypal donation][paypal].
+
+## Changelog
+
+**v1.3**
+
++ "Open Externally" should now handle right click on sidebar correctly (fixes #2)
+
+**v1.2**
+
++ multiple matching patterns do not trigger open multiple times
++ double click behaviour is now more stable and predictable
++ preview closing is more reliable
+
+
 ## Installation
 
  1. Install [Sublime Text](http://www.sublimetext.com/)
@@ -61,3 +76,5 @@ You can bind this command to a shortcut by adding the following to your keymap:
 
 [Hex​Viewer]:   <https://sublime.wbond.net/packages/HexViewer> 
 [Zip Browser]: <https://sublime.wbond.net/packages/Zip%20Browser> 
+
+[paypal]: <https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JFWLSUZYXUHAQ>

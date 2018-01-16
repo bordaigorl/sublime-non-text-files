@@ -7,11 +7,11 @@ from fnmatch import fnmatch
 
 def open_file(filepath):
     if sublime.platform() == "osx":
-        subprocess.call(('open', filepath))
+        subprocess.Popen(('open', filepath))
     elif sublime.platform() == "windows":
         os.startfile(filepath)
     elif sublime.platform() == "linux":
-        subprocess.call(('xdg-open', filepath))
+        subprocess.Popen(('xdg-open', filepath))
 
 
 class OpenExternallyCommand(sublime_plugin.WindowCommand):
